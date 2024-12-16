@@ -36,3 +36,50 @@ $> ./expand_str "" | cat -e
 $
 $>
 */
+
+#include <unistd.h>
+
+void	expand_str(char *str);
+int	skip_whitespace(char *str, int i);
+int	ft_wordlen(char *str);
+
+int	main(int argc, char *argv[])
+{
+	if (argc == 2)
+		expand_str(argv[1]);
+	write(1, "\n", 1);
+	return (0);
+}
+
+void	expand_str(char *str)
+{
+	int i = 0;
+	int first_word = 1;
+	int word_len;
+	i = skip_whitespace(str, i);
+	while (str[i])
+	{
+		if (first_word == 0)
+			write(1, "   ", 3);
+		word_len = ft_wordlen(str + i);
+		write(1, str + i, word_len);
+		i = i + word_len;
+		first_word = 0;
+		i = skip_whitespace(str, i);
+	}
+}
+
+int	skip_whitespace(char *str, int i)
+{
+	while (str[i] == ' ' || str[i] == '\t')
+		i++;
+	return (i);
+}
+
+int	ft_wordlen(char *str)
+{
+	int len = 0;
+	while (str[len] && str[len] != ' ' && str[len] != '\t')
+		len++;
+	return (len);
+}
