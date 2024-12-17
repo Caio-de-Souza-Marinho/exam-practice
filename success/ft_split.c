@@ -16,37 +16,39 @@ char    **ft_split(char *str);
 */
 
 #include <stdio.h>
+
+
 #include <stdlib.h>
 
 char    **ft_split(char *str);
 int	count_words(char *str);
-void	fill_words(char **str_arr, char *str);
+void	fill_words(char **str_array, char *str);
 char	*word_dupe(char *str);
 int	ft_wordlen(char *str);
 
 int	main(void)
 {
-	char *str = "caralh porra merda lixo cu";
+	char *str = "caralho, que bucetao kkkkkkk   .f oda..";
 	char **str_arr = ft_split(str);
 	for (int i = 0; i < 5; i++)
 		printf("%s\n", str_arr[i]);
-	return (0);
 }
 
 char    **ft_split(char *str)
 {
-	int num_word = count_words(str);
-	char **str_arr = (char **)malloc((num_word + 1) * sizeof(char *));
-	str_arr[num_word] = 0;
-	fill_words(str_arr, str);
-	return (str_arr);
+	int num_words = count_words(str);
+	char **str_array = malloc((num_words + 1) * sizeof(char *));
+
+	str_array[num_words] = 0;
+	fill_words(str_array, str);
+
+	return (str_array);
 }
 
 int	count_words(char *str)
 {
 	int num_words = 0;
 	int i = 0;
-
 	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
 		i++;
 	while (str[i])
@@ -60,15 +62,16 @@ int	count_words(char *str)
 	return (num_words);
 }
 
-void	fill_words(char **str_arr, char *str)
+void	fill_words(char **str_array, char *str)
 {
 	int word_index = 0;
 	int i = 0;
+
 	while (str[i] == ' ' || str[i] == '\t' || str[i] == '\n')
 		i++;
 	while (str[i])
 	{
-		str_arr[word_index] = word_dupe(str + i);
+		str_array[word_index] = word_dupe(str + i);
 		word_index++;
 		while (str[i] && str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
 			i++;
@@ -81,7 +84,8 @@ char	*word_dupe(char *str)
 {
 	int i = 0;
 	int len = ft_wordlen(str);
-	char *word = (char *)malloc((len + 1) + sizeof(char));
+	char *word = malloc((len + 1) * sizeof(char));
+	
 	word[len] = '\0';
 	while (i < len)
 	{
@@ -93,8 +97,9 @@ char	*word_dupe(char *str)
 
 int	ft_wordlen(char *str)
 {
-	int len = 0;
-	while (str[len] && str[len] != ' ' && str[len] != '\t' && str[len] != '\n')
-		len++;
-	return (len);
+	int i = 0;
+
+	while (str[i] && str[i] != ' ' && str[i] != '\t' && str[i] != '\n')
+		i++;
+	return (i);
 }
