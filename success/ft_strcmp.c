@@ -11,7 +11,6 @@ Your function must be declared as follows:
 int    ft_strcmp(char *s1, char *s2);
 */
 
-
 #include <stdio.h>
 
 int    ft_strcmp(char *s1, char *s2);
@@ -22,11 +21,12 @@ int	main(void)
 	char *s2 = "caio";
 	char *s3 = "cbio";
 	char *s4 = "caho";
-	printf("%d\n", ft_strcmp(s1, s2));
-	printf("%d\n", ft_strcmp(s1, s3));
-	printf("%d\n", ft_strcmp(s1, s4));
-
-	return (0);
+	int res1 = ft_strcmp(s1, s2);
+	printf("%d\n", res1);
+	int res2 = ft_strcmp(s1, s3);
+	printf("%d\n", res2);
+	int res3 = ft_strcmp(s1, s4);
+	printf("%d\n", res3);
 }
 
 int    ft_strcmp(char *s1, char *s2)

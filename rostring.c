@@ -36,9 +36,12 @@ $>
 */
 
 #include <unistd.h>
-#include <stdlib.h>
 
 void	rostring(char *str);
+int	skip_whitespace(char *str, int i);
+int	ft_wordlen(char *str);
+int	epur_str(char *str);
+int	print_word(char *str, int i, int *is_first);
 
 int	main(int argc, char *argv[])
 {
@@ -46,4 +49,55 @@ int	main(int argc, char *argv[])
 		rostring(argv[1]);
 	write(1, "\n", 1);
 	return (0);
+}
+
+void	rostring(char *str)
+{
+	int i = 0;
+	int is_first;
+	i = skip_whitespace(str, i);
+	i = i + ft_wordlen(str + i);
+	is_first = epur_str(str + i);
+	print_word(str, 0, &is_first);
+}
+
+int	skip_whitespace(char *str, int i)
+{
+	while (str[i] == ' ' || str[i] == '\t')
+		i++;
+	return (i);
+}
+
+int	ft_wordlen(char *str)
+{
+	int len = 0;
+
+	while (str[len] && str[len] != ' ' && str[len] != '\t')
+		len++;
+	return (len);
+}
+
+int	epur_str(char *str)
+{
+	int i = 0;
+	int is_first = 1;
+	i = skip_whitespace(str, i);
+	while (str[i])
+	{
+		i = print_word(str, i, &is_first);
+		i = skip_whitespace(str, i);
+	}
+	return (is_first);
+}
+
+int	print_word(char *str, int i, int *is_first)
+{
+	int word_len;
+	i = skip_whitespace(str, i);
+	word_len = ft_wordlen(str + i);
+	if (*is_first == 0)
+		write(1, " ", 1);
+	write(1, str + i, word_len);
+	*is_first = 0;
+	return (i + word_len);
 }
