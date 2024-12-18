@@ -12,27 +12,29 @@ Your function must be declared as follows:
 char	*ft_itoa(int nbr);
 */
 
+#include <limits.h>
 #include <stdio.h>
 #include <stdlib.h>
-#include <limits.h>
 
 char	*ft_itoa(int nbr);
 int	count_digits(int nbr);
 
 int	main(void)
 {
-	//int num = 4232;
-	printf("%s\n", ft_itoa(INT_MIN));
+	//int num = -4232;
+	printf("%s\n", ft_itoa(INT_MAX));
 	return (0);
 }
 
 char	*ft_itoa(int nbr)
 {
-	int nbr_len = count_digits(nbr);
-	char *str = (char *)malloc((nbr_len + 1) * sizeof(char));
-	str[nbr_len] = '\0';
-	long num = nbr;
+	int len = count_digits(nbr);
+	char *str = (char *)malloc((len + 1) * sizeof(char));
+	if (str == NULL)
+		return (NULL);
+	str[len] = '\0';
 	int i = 0;
+	long num = nbr;
 
 	if (num < 0)
 	{
@@ -45,7 +47,7 @@ char	*ft_itoa(int nbr)
 		str[i] = '0';
 		return (str);
 	}
-	i = nbr_len - 1;
+	i = len - 1;
 	while (num != 0)
 	{
 		str[i] = (num % 10) + 48;
@@ -57,21 +59,22 @@ char	*ft_itoa(int nbr)
 
 int	count_digits(int nbr)
 {
-	int count = 0;
+	int len = 0;
+
 	if (nbr < 0)
 	{
-		count++;
+		len++;
 		nbr = -nbr;
 	}
 	if (nbr == 0)
 	{
-		count++;
-		return (count);
+		len++;
+		return (len);
 	}
 	while (nbr != 0)
 	{
-		count++;
+		len++;
 		nbr /= 10;
 	}
-	return (count);
+	return (len);
 }
