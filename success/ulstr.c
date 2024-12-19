@@ -25,14 +25,15 @@ $
 
 #include <unistd.h>
 
-void	ulstr(char *str);
-int	ft_islower(char c);
 int	ft_isupper(char c);
+int	ft_islower(char c);
+
+void	ulstr(char *str);
 
 int	main(int argc, char *argv[])
 {
 	if (argc == 2)
-		ulstr(argv[1]);
+		ulstr(argv[1]);		
 	write(1, "\n", 1);
 	return (0);
 }
@@ -42,32 +43,33 @@ void	ulstr(char *str)
 	int i = 0;
 	while (str[i])
 	{
-		if (ft_islower(str[i]))
-		{
-			str[i] -= 32;
-			write(1, &str[i], 1);
-		}
-		else if (ft_isupper(str[i]))
+		if (ft_isupper(str[i]))
 		{
 			str[i] += 32;
+			write(1, &str[i], 1);
+		}
+		else if (ft_islower(str[i]))
+		{
+			str[i] -= 32;
 			write(1, &str[i], 1);
 		}
 		else
 			write(1, &str[i], 1);
 		i++;
-	}
-}
 
-int	ft_islower(char c)
-{
-	if (c >= 'a' && c <= 'z')
-		return (1);
-	return (0);
+	}
 }
 
 int	ft_isupper(char c)
 {
 	if (c >= 'A' && c <= 'Z')
+		return (1);
+	return (0);
+}
+
+int	ft_islower(char c)
+{
+	if (c >= 'a' && c <= 'z')
 		return (1);
 	return (0);
 }

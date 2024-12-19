@@ -29,36 +29,31 @@ $> ./do_op | cat -e
 $
 */
 
+#include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#include <stdio.h>
 
-void	do_op(int n1, char op, int n2);
+void	do_op(int n1, char c, int n2);
 
 int	main(int argc, char *argv[])
 {
 	if (argc == 4)
-	{
-		int n1 = atoi(argv[1]);
-		char op = argv[2][0];
-		int n2 = atoi(argv[3]);
-		do_op(n1, op, n2);
-	}
+		do_op(atoi(argv[1]), argv[2][0], atoi(argv[3]));
 	else
 		write(1, "\n", 1);
 	return (0);
 }
 
-void	do_op(int n1, char op, int n2)
+void	do_op(int n1, char c, int n2)
 {
-	if (op == '+')
+	if (c == '+')
 		printf("%d\n", n1 + n2);
-	else if (op == '-')
+	else if (c == '-')
 		printf("%d\n", n1 - n2);
-	else if (op == '*')
+	else if (c == '*')
 		printf("%d\n", n1 * n2);
-	else if (op == '/')
+	else if (c == '/')
 		printf("%d\n", n1 / n2);
-	else if (op == '%')
+	else if (c == '%')
 		printf("%d\n", n1 % n2);
 }
