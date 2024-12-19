@@ -26,27 +26,31 @@ $> ./pgcd | cat -e
 $
 */
 
-#include <stdio.h>
 #include <stdlib.h>
+#include <stdio.h>
 
-void	pgcd(int n1, int n2);
+void	pgcd(unsigned int n1, unsigned int n2);
 
 int	main(int argc, char *argv[])
 {
 	if (argc == 3)
-		pgcd(atoi(argv[1]), atoi(argv[2]));
+	{
+		unsigned int n1 = atoi(argv[1]);
+		unsigned int n2 = atoi(argv[2]);
+		pgcd(n1, n2);
+	}
 	printf("\n");
 	return (0);
 }
 
-void	pgcd(int n1, int n2)
+void	pgcd(unsigned int n1, unsigned int n2)
 {
 	int i = 0;
 	if (n1 > n2)
 		i = n1;
 	else if (n1 < n2)
 		i = n2;
-	while (i > 0)
+	while (1)
 	{
 		if (n1 % i == 0 && n2 % i == 0)
 		{
