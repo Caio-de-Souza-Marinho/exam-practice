@@ -54,7 +54,7 @@ void	str_capitalizer(char *str)
 	int i = 0;
 	while (str[i])
 	{
-		while (str[i] == ' ' || str[i] == '\t')
+		while (str[i] && (str[i] == ' ' || str[i] == '\t'))
 		{
 			write(1, &str[i], 1);
 			i++;

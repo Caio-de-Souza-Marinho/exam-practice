@@ -4,7 +4,7 @@ Expected files   : search_and_replace.c
 Allowed functions: write, exit
 --------------------------------------------------------------------------------
 
-Write a program called search_and_replace that takes 3 arguments, the first
+Write a program called search_and_replace that takes 3 arguments, the first 
 arguments is a string in which to replace a letter (2nd argument) by
 another one (3rd argument).
 
@@ -31,7 +31,7 @@ eNcOre Un ExEmPle Pas Facile a Ecrire $
 #include <unistd.h>
 
 void	search_and_replace(char *str, char *search, char *replace);
-int	ft_strlen(char *s);
+int	ft_strlen(char *str);
 
 int	main(int argc, char *argv[])
 {
@@ -44,22 +44,26 @@ int	main(int argc, char *argv[])
 void	search_and_replace(char *str, char *search, char *replace)
 {
 	int i = 0;
-	if (ft_strlen(search) > 1 || ft_strlen(replace) > 1)
+	int len_s = ft_strlen(search);
+	int len_r = ft_strlen(replace);
+	if (len_s > 1 || len_r > 1)
 		return ;
 	while (str[i])
 	{
 		if (str[i] == search[0])
+		{
 			write(1, &replace[0], 1);
-		else
-			write(1, &str[i], 1);
+			i++;
+		}
+		write(1, &str[i], 1); 
 		i++;
 	}
 }
 
-int	ft_strlen(char *s)
+int	ft_strlen(char *str)
 {
 	int len = 0;
-	while (s[len])
+	while (str[len])
 		len++;
 	return (len);
 }
