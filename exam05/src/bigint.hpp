@@ -14,6 +14,8 @@ class    bigint
 		bigint(const bigint &other);
 		bigint &operator=(const bigint &other);
 		~bigint(void);
+
+		const std::vector<int>	&getValue(void) const;
 	
 		bigint operator+(const bigint &other) const;
 		bigint &operator+=(const bigint &other);
@@ -24,8 +26,8 @@ class    bigint
 		// pos increment
 		bigint operator++(int);
 
-		bool operator>(const bigint &other) const;
 		bool operator<(const bigint &other) const;
+		bool operator>(const bigint &other) const;
 		bool operator>=(const bigint &other) const;
 		bool operator<=(const bigint &other) const;
 		bool operator==(const bigint &other) const;
