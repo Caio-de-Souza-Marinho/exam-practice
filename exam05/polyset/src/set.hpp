@@ -1,7 +1,7 @@
 #ifndef SET_HPP
 #define SET_HPP
 
-#include "subject/searchable_bag.hpp"
+#include "../subject/searchable_bag.hpp"
 
 class	set : public searchable_bag
 {
