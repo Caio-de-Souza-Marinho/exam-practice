@@ -1,8 +1,8 @@
-#include "searchable_tree_bag.hpp"
-#include "searchable_array_bag.hpp"
+#include "../searchable_tree_bag.hpp"
+#include "../searchable_array_bag.hpp"
 #include <cstdlib>
 #include <iostream>
-#include "set.hpp"
+#include "../set.hpp"
 
 int main(int ac, char **av)
 {
@@ -42,5 +42,5 @@ int main(int ac, char **av)
 	sa.get_bag().print();
 	st.print();
 	sa.clear();
-	// sa.insert((int[]){1, 2, 3, 4}, 4);
+	//sa.insert((int[]){1, 2, 3, 4}, 4);
 }
