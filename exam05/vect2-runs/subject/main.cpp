@@ -1,4 +1,4 @@
-#include "../src/vect2.hpp"
+#include "../vect2.hpp"
 #include <iostream>
 
 int main(void) {
