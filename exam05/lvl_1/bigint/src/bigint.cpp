@@ -137,6 +137,8 @@ bool bigint::operator!=(const bigint &other) const
 
 bigint &bigint::operator<<=(const bigint &other)
 {
+	if (_value.size() == 1 && _value[0] == 0)
+		return (*this);
 	size_t	shift = 0;
 	size_t	base = 1;
 	std::vector<int>	vector = other.getValue();

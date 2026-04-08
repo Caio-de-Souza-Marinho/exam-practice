@@ -38,5 +38,13 @@ int	main(void)
 	std::cout << std::endl;
 	std::cout << "\"(x << 2)\"--> " << (x << 2) << "\n";   // prints 123400
 	std::cout << "\"(x >>= 2)\"--> " << (x >>= 2) << "\n";   // prints   12
+	
+	bigint result(0);
+	for (int i = 0; i < 48; i++)
+	{
+		result = (result << 1) + bigint(9);
+	}
+	std::cout << result << std::endl;
+
 	return (0);
 }
