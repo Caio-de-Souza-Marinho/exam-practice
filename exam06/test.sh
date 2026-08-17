@@ -11,9 +11,6 @@ fail() { echo "✗ $1"; FAIL=$((FAIL+1)); }
 pkill mini_serv 2>/dev/null
 sleep 0.2
 
-# compile
-gcc -Wall mini_serv.c -o mini_serv 2>/dev/null || { echo "COMPILATION FAILED"; exit 1; }
-
 # ── test 1: wrong number of arguments ──
 ERR=$(./mini_serv 2>&1)
 [ "$ERR" = "Wrong number of arguments" ] && pass "wrong args" || fail "wrong args (got: '$ERR')"

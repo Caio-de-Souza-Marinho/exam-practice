@@ -14,6 +14,7 @@ void	fatal(void)
 	write(STDERR_FILENO, fatalErrorString, fatalErrorStringLen);
 	exit(1);
 }
+
 int	main(int argc, char **argv)
 {
 	if (argc != 2)
